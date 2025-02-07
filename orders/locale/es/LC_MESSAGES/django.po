@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-25 14:14+0100\n"
+"PO-Revision-Date: 2025-01-25 16:51+0000\n"
+"Last-Translator:   <michaelpapii7@gmail.com>\n"
+"Language-Team: Spanish <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Translated-Using: django-rosetta 0.10.1\n"
+
+#: .\orders\models.py:11
+msgid "first_name"
+msgstr "nombre"
+
+#: .\orders\models.py:12
+msgid "last_name"
+msgstr "apellido"
+
+#: .\orders\models.py:13
+msgid "e-mail"
+msgstr "e-mail"
+
+#: .\orders\models.py:14
+msgid "address"
+msgstr "dirección"
+
+#: .\orders\models.py:15
+msgid "post_code"
+msgstr "código postal"
+
+#: .\orders\models.py:16
+msgid "city"
+msgstr "ciudad"
+
+#: .\orders\templates\orders\order\create.html:6
+msgid " Checkout"
+msgstr " Pago"
+
+#: .\orders\templates\orders\order\create.html:10
+msgid "Checkout"
+msgstr "Pago"
+
+#: .\orders\templates\orders\order\create.html:12
+msgid "Your order"
+msgstr "Tu pedido"
+
+#: .\orders\templates\orders\order\create.html:23
+#, python-format
+msgid ""
+"\n"
+"              \"%(code)s\" (%(discount)s%% off)\n"
+"            "
+msgstr ""
+"\n"
+"              \"%(code)s\" (%(discount)s%% de descuento)\n"
+"            "
+
+#: .\orders\templates\orders\order\create.html:30
+msgid "Total"
+msgstr "Total"
+
+#: .\orders\templates\orders\order\create.html:34
+msgid "Place order"
+msgstr "Realizar pedido"
+
+#: .\orders\urls.py:10
+msgid "create/"
+msgstr "crear"

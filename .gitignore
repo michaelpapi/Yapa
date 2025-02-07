@@ -1,0 +1,9 @@
+.env
+cert.crt
+cert.key
+__pycache__/
+*.sqlite3
+debug.log
+env/
+media/
+products/

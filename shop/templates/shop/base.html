@@ -1,0 +1,96 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}YAPA{% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <a href="/" class="logo">YAPA</a>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        
+        <div class="languages">
+            <p>{% translate "Language" %}:</p>
+            <ul class="languages">
+                {% for language in languages %}
+                    <li>
+                        <a href="/{{ language.code }}/" 
+                           {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
+                            {{ language.name_local }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <div id="subheader">
+        <div class="cart">
+            {% with total_items=cart|length %}
+                {% if total_items > 0 %}
+                    <a href="{% url 'cart:cart_detail' %}" class="cart-link">
+                        <img src="{% static 'img/cart.png' %}" alt="Cart" class="cart-icon">
+                        <span class="cart-badge">{{ total_items }}</span>
+                        <span class="cart-price">${{ cart.get_total_price }}</span>
+                    </a>
+                {% elif not order %}
+                    {% translate "Your cart is empty." %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="user-container">
+            {% if request.user.is_authenticated %}
+                <!-- Profile Section (Dropdown Effect Only Here) -->
+                <div class="user-profile" id="user-menu">
+                    <img src="{% if profile.photo %}{{ profile.photo.url }}{% else %}{% static 'img/no-image.png' %}{% endif %}" 
+                         alt="Profile Picture" class="profile-pic">
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown">
+                        <a href="{% url 'edit' %}">Edit Profile</a>
+                        <a href="{% url 'password_change' %}">Change Password</a>
+                    </div>
+                </div>
+            
+                <!-- User Greeting & Logout (Separate from Dropdown) -->
+                <div class="user-info">
+                    <p>Hello {{ request.user.first_name|default:request.user.username }}</p>
+                    <form action="{% url 'logout' %}" method="post" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="auth-buttons">
+                    <form action="{% url 'register' %}" method="get">
+                        <button type="submit" class="btn btn-primary register-btn">Register</button>
+                    </form>
+                    <form action="{% url 'login' %}" method="get">
+                        <button type="submit" class="btn btn-secondary login-btn">Log in</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>      
+    </div>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="#" class="close"></a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{% static 'js/userMenu.js' %}"></script>
+</body>
+</html>
