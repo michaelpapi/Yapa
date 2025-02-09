@@ -58,14 +58,14 @@
   <div class="button-container">
     <form action="{% url 'payment:process' %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn-custom btn-success-custom">
+        <button type="submit" class="btn-primary">
             Pay Now
         </button>
     </form>
 
     <form action="{% url 'orders:order_cancel' order.id %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn-custom btn-danger-custom">
+        <button type="submit" class="btn-primary">
             Cancel Order
         </button>
     </form>
